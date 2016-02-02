@@ -8,8 +8,6 @@ namespace setops {
 	template<typename T, typename InputIter>
 	class difference_iterator : public std::iterator<std::input_iterator_tag, T> {
 		public:
-			difference_iterator() { }
-
 			difference_iterator(
 				InputIter it1,
 				InputIter it1_end,
