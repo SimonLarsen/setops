@@ -31,7 +31,7 @@ namespace setops {
 			}
 
 			const T operator*() { return *it1; }
-			const T *operator->() { return &(*it1); }
+			const T *operator->() { return &(*this); }
 
 			// Prefix
 			difference_iterator &operator++() {
