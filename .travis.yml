@@ -2,3 +2,4 @@ language: cpp
 compiler:
     - gcc
     - clang
+script: cmake . && make && ./test_exe
