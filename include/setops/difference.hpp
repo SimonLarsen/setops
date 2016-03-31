@@ -5,14 +5,14 @@
 #include <utility>
 
 namespace setops {
-	template<typename T, typename InputIter>
+	template<typename T, typename InputIter1, typename InputIter2>
 	class difference_iterator : public std::iterator<std::input_iterator_tag, T> {
 		public:
 			difference_iterator(
-				InputIter it1,
-				InputIter it1_end,
-				InputIter it2,
-				InputIter it2_end
+				InputIter1 it1,
+				InputIter1 it1_end,
+				InputIter2 it2,
+				InputIter2 it2_end
 			)
 			: it1(it1)
 			, it1_end(it1_end)
@@ -59,24 +59,24 @@ namespace setops {
 				}
 			}
 
-			InputIter it1, it1_end;
-			InputIter it2, it2_end;
+			InputIter1 it1, it1_end;
+			InputIter2 it2, it2_end;
 	};
 
-	template<typename T, typename InputIter>
+	template<typename T, typename InputIter1, typename InputIter2>
 	inline std::pair<
-		difference_iterator<T, InputIter>,
-		difference_iterator<T, InputIter>
+		difference_iterator<T, InputIter1, InputIter2>,
+		difference_iterator<T, InputIter1, InputIter2>
 	>
 	set_difference(
-		InputIter list_begin,
-		InputIter list_end,
-		InputIter exclude_begin,
-		InputIter exclude_end
+		InputIter1 list_begin,
+		InputIter1 list_end,
+		InputIter2 exclude_begin,
+		InputIter2 exclude_end
 	) {
 		return std::make_pair(
-			difference_iterator<T, InputIter>(list_begin, list_end, exclude_begin, exclude_end),
-			difference_iterator<T, InputIter>(list_end, list_end, exclude_end, exclude_end)
+			difference_iterator<T, InputIter1, InputIter2>(list_begin, list_end, exclude_begin, exclude_end),
+			difference_iterator<T, InputIter1, InputIter2>(list_end, list_end, exclude_end, exclude_end)
 		);
 	}
 }
